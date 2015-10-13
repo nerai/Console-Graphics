@@ -52,17 +52,16 @@ namespace ConsoleGraphics
             Console.Title = title;
             Console.CursorVisible = false;
             Console.BackgroundColor = ConsoleColor.Black;
-        reTry:
-            try
-            {
-                Console.SetWindowSize(width, height + 15);
-                Console.SetBufferSize(width, height + 15);
-            }
-            catch (ArgumentOutOfRangeException)
-            {
-                Console.WriteLine("Decrease your font size and press enter");
-                Console.ReadLine();
-                goto reTry;
+            for (; ; ) {
+                try {
+                    Console.SetWindowSize (width, height + 15);
+                    Console.SetBufferSize (width, height + 15);
+                    break;
+                }
+                catch (ArgumentOutOfRangeException) {
+                    Console.WriteLine ("Decrease your font size and press enter");
+                    Console.ReadLine ();
+                }
             }
             Console.Clear();//clear colors from user preset.
             Console.SetCursorPosition(0, height);
